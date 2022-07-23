@@ -2,7 +2,11 @@ class Forca {
 
   constructor(palavraSecreta) {
     this.palavraSecreta = palavraSecreta;
-    this.dadosDoJogo = this.buscarDadosDoJogo()
+    this.dadosDoJogo = {
+      letrasChutadas: [], // Deve conter todas as letras chutadas
+      vidas: 6, // Quantidade de vidas restantes
+      palavra: []
+    }
     this.dadosDoJogo.palavra = new Array(palavraSecreta.length).fill("_")
     this.estadoDoJogo = "aguardando chute";
 
@@ -36,7 +40,6 @@ class Forca {
     }
 
     this.estadoDoJogo = this.buscarEstado()
-    console.log(this.estadoDoJogo)
 
   }
 
@@ -59,9 +62,9 @@ class Forca {
 
   buscarDadosDoJogo() {
     return {
-      letrasChutadas: [], // Deve conter todas as letras chutadas
-      vidas: 6, // Quantidade de vidas restantes
-      palavra: [] // Deve ser um array com as letras que já foram acertadas ou o valor "_" para as letras não identificadas
+      letrasChutadas: this.dadosDoJogo.letrasChutadas, // Deve conter todas as letras chutadas
+      vidas: this.dadosDoJogo.vidas, // Quantidade de vidas restantes
+      palavra: this.dadosDoJogo.palavra, // Deve ser um array com as letras que já foram acertadas ou o valor "_" para as letras não identificadas
     }
   }
 }
